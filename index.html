@@ -1,0 +1,1647 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Baker's Barn - Home Baking</title>
+  <meta name="description" content="Home-baked cakes, cheesecakes & desserts. Fresh, premium, and made with love." />
+  <link rel="icon" href="assets/brand/logo.jpg" />
+
+  <style>
+    :root{
+      --mint:#cfe9e4;
+      --cream:#fbf7ee;
+      --ink:#2b2b2b;
+      --muted:#6b6b6b;
+      --teal:#34b7b2;
+      --teal-2:#2aa39f;
+      --line:rgba(43,43,43,.14);
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Noto Sans", sans-serif;
+      color:var(--ink);
+      background: linear-gradient(180deg,var(--mint) 0%, #dff2ee 30%, var(--cream) 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px, calc(100% - 32px)); margin:0 auto;}
+
+    /* Header */
+    .header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(207,233,228,.72);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .header-inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0; gap:16px;}
+    .brand{display:flex; align-items:center; gap:12px;}
+    .brand img{width:44px; height:44px; object-fit:contain; filter: drop-shadow(0 2px 2px rgba(0,0,0,.06));}
+    .brand .title{display:flex; flex-direction:column; line-height:1.1;}
+    .brand .title strong{font-family: ui-serif, Georgia, "Times New Roman", Times, serif; letter-spacing:.5px; font-size:18px;}
+    .brand .title span{font-size:12px; color:var(--muted);}
+
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    .nav a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(43,43,43,.10);
+      background: rgba(251,247,238,.45);
+    }
+    .nav a:hover{border-color:rgba(43,43,43,.18); color:var(--ink)}
+
+    .cta{display:flex; gap:10px; align-items:center;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(43,43,43,.12);
+      background: var(--cream);
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+      font-weight:700; font-size:13px;
+      cursor:pointer;
+    }
+    .btn.primary{
+      background: linear-gradient(180deg,var(--teal) 0%, var(--teal-2) 100%);
+      color:white; border-color:rgba(0,0,0,.05);
+    }
+
+    /* Hero */
+    .hero{padding:26px 0 18px;}
+    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; align-items:stretch;}
+    .hero-card{
+      background: rgba(251,247,238,.78);
+      border:1px solid rgba(43,43,43,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-left{padding:22px 22px 18px;}
+    .kicker{
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      letter-spacing:.28em;
+      font-size:11px;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .h1{
+      margin:10px 0 8px;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      font-size:42px;
+      line-height:1.05;
+    }
+    .script{
+      font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+      font-size:26px;
+      color:rgba(43,43,43,.62);
+    }
+    .hero-note{margin-top:12px; color:var(--muted); font-size:14px; max-width:60ch}
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .hero-right{display:flex; flex-direction:column; gap:18px;}
+    .shelf-hero{position:relative; aspect-ratio: 16/10; background: #eaf6f3;}
+    .shelf-hero video, .shelf-hero img{width:100%; height:100%; object-fit:cover; display:block;}
+    .hero-badge{
+      position:absolute; left:14px; bottom:14px;
+      background: rgba(251,247,238,.92);
+      border:1px solid rgba(43,43,43,.12);
+      padding:8px 10px; border-radius: 14px;
+      font-size:12px; color:var(--muted);
+    }
+    .poster{aspect-ratio:1/1; background:#f2efe7;}
+    .poster img{width:100%; height:100%; object-fit:cover; display:block;}
+
+    /* Sections */
+    .section{padding:22px 0;}
+    .section-title{display:flex; align-items:center; justify-content:space-between; gap:12px; margin: 6px 0 14px;}
+    .section-title h2{margin:0; font-family: ui-serif, Georgia, "Times New Roman", Times, serif; font-size:28px;}
+    .section-sub{margin:0; color:var(--muted); font-size:14px}
+    .menu-section{padding:18px 0}
+    .section-head{display:flex; align-items:center; gap:12px; margin-bottom:10px}
+    .section-head h3{margin:0; font-family: ui-serif, Georgia, "Times New Roman", Times, serif; font-size:22px;}
+    .section-line{height:1px; background:var(--line); flex:1}
+
+    /* Shelf */
+    .shelf{
+      display:grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(220px, 1fr);
+      gap:14px;
+      overflow-x:auto;
+      padding-bottom:8px;
+      scroll-snap-type:x mandatory;
+    }
+    .shelf::-webkit-scrollbar{height:10px}
+    .shelf::-webkit-scrollbar-thumb{background: rgba(43,43,43,.15); border-radius:999px}
+
+    .card{
+      scroll-snap-align:start;
+      background: rgba(251,247,238,.86);
+      border:1px solid rgba(43,43,43,.10);
+      border-radius: 18px;
+      overflow:hidden;
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      display:flex; flex-direction:column;
+      min-height: 250px;
+    }
+    .media{
+      height:170px;
+      background:#eef7f4;
+      position:relative;
+      border-radius: 18px;
+      overflow:hidden;
+    }
+    .media img{width:100%; height:100%; object-fit:cover; display:block;}
+    .media video{width:100%; height:100%; object-fit:cover; display:block; background:#eaf6f3;}
+
+    .card-body{padding:12px 12px 14px; display:flex; flex-direction:column; gap:8px}
+    .card h4{margin:0; font-size:15px}
+    .meta{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .pill{
+      font-size:11px;
+      color: var(--muted);
+      border:1px solid rgba(43,43,43,.12);
+      padding:6px 8px; border-radius:999px;
+      background: rgba(255,255,255,.55);
+    }
+
+    /* Coming soon */
+    .coming-soon .media img{
+      object-fit:contain;
+      padding:24px;
+      filter: grayscale(1) contrast(.9) opacity(.55);
+      background: rgba(255,255,255,.55);
+    }
+    .soon-tag{
+      position:absolute; left:12px; right:12px; bottom:12px;
+      background: rgba(43,43,43,.72);
+      color:#fff;
+      font-size:12px;
+      padding:8px 10px;
+      border-radius: 12px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      display:none;
+    }
+    .coming-soon .soon-tag{display:block;}
+
+    /* Better video UX */
+    .play-overlay{
+      position:absolute; inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.28) 100%);
+      opacity: 1;
+      transition: opacity .2s ease;
+    }
+    .play-btn{
+      width: 54px; height: 54px;
+      border-radius: 999px;
+      border: 1px solid rgba(43,43,43,.14);
+      background: rgba(251,247,238,.92);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 10px 22px rgba(0,0,0,.14);
+    }
+    .play-btn svg{width:22px;height:22px; fill: var(--ink); }
+    .media.is-playing .play-overlay{opacity:0; pointer-events:none;}
+    .video-badge{
+      position:absolute; top:12px; left:12px;
+      background: rgba(251,247,238,.92);
+      border:1px solid rgba(43,43,43,.12);
+      padding:6px 8px; border-radius:999px;
+      font-size:12px; color:rgba(43,43,43,.72);
+    }
+
+    /* WhatsApp icon buttons */
+    .icon-btn{
+      width: 38px; height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(43,43,43,.14);
+      background: rgba(52,183,178,.12);
+      display:inline-flex; align-items:center; justify-content:center;
+      cursor:pointer;
+    }
+    .icon-btn:hover{ background: rgba(52,183,178,.18); }
+    .icon-btn svg{ width:20px; height:20px; fill: var(--ink); }
+
+    /* Floating WhatsApp */
+    .wa-float{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      background: #25D366;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+      border: 2px solid rgba(255,255,255,.7);
+    }
+    .wa-float svg{ width:28px; height:28px; fill:#fff; }
+    .wa-float span{
+      position:absolute;
+      right: 68px;
+      bottom: 12px;
+      background: rgba(43,43,43,.82);
+      color:#fff;
+      padding:8px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    @media (max-width: 520px){
+      .wa-float span{ display:none; }
+    }
+
+    /* Footer */
+    .footer{padding:26px 0 34px; border-top:1px solid rgba(0,0,0,.06); margin-top: 18px;}
+    .footer-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:16px; align-items:start;}
+    .small{color:var(--muted); font-size:13px; line-height:1.6}
+
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns:1fr}
+      .nav{display:none}
+      .footer-grid{grid-template-columns:1fr}
+      .h1{font-size:36px}
+    }
+
+    /* ===== V2: Clean, premium styling overrides (drop-in) ===== */
+
+    /* Fonts: 1 serif + 1 sans */
+    :root{
+      --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Noto Sans", sans-serif;
+      --font-serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+
+      --surface: rgba(255,255,255,.92);
+      --surface-2: rgba(251,247,238,.78);
+      --border: rgba(0,0,0,.08);
+      --shadow-soft: 0 10px 26px rgba(0,0,0,.06);
+    }
+
+    /* Apply fonts */
+    body{ font-family: var(--font-sans); line-height: 1.6; }
+    .brand .title strong,
+    .kicker,
+    .h1,
+    .section-title h2,
+    .section-head h3{
+      font-family: var(--font-serif) !important;
+    }
+
+    /* Remove script font usage; keep a simple tagline */
+    .script{ display:none !important; }
+    .tagline{
+      margin-top: 4px;
+      font-size: 14px;
+      color: rgba(43,43,43,.64);
+    }
+
+    /* Calm borders + shadows */
+    .card, .hero-card, .btn, .nav a, .pill{
+      border-color: var(--border) !important;
+    }
+    .card, .hero-card{
+      box-shadow: var(--shadow-soft) !important;
+    }
+
+    /* Lighter cards and media corners */
+    .card{ background: var(--surface-2) !important; position:relative; }
+    .media{ border-radius: 14px !important; }
+
+    /* Price badges (auto if card has data-price="...") */
+    .card[data-price]::after{
+      content: attr(data-price);
+      position:absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 6;
+
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      color: rgba(43,43,43,.86);
+
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,.08);
+    }
+
+    /* Hero: reduce height on mobile */
+    @media (max-width: 520px){
+      .hero{ padding: 14px 0 10px !important; }
+      .hero-left{ padding: 18px 16px 14px !important; }
+      .h1{ font-size: 30px !important; }
+      .hero-grid{ gap: 12px !important; }
+      .shelf-hero{ aspect-ratio: 16/12 !important; }
+      .poster{ display:none !important; }
+    }
+
+    /* Section separators (replace border line) */
+    .section-line{ display:none !important; }
+    .section-head{
+      position:relative;
+      margin-bottom: 12px !important;
+      padding-bottom: 10px;
+    }
+    .section-head::after{
+      content:"";
+      position:absolute;
+      left:0; right:0;
+      bottom:0;
+      height:1px;
+      background: linear-gradient(90deg,
+        rgba(0,0,0,0),
+        rgba(0,0,0,.12),
+        rgba(0,0,0,0)
+      );
+    }
+    .section{ padding: 18px 0 !important; }
+    .menu-section{ padding: 16px 0 !important; }
+
+    /* Shelf: snap + fade indicators */
+    .shelf{
+      position:relative;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: 14px;
+      gap: 16px !important;
+      padding-bottom: 14px !important;
+      padding-inline: 6px;
+    }
+    .card{ scroll-snap-align: start; }
+
+    /* fade overlays */
+    .shelf::before,
+    .shelf::after{
+      content:"";
+      position:absolute;
+      top:0;
+      width: 32px;
+      height: 100%;
+      pointer-events:none;
+      z-index: 5;
+    }
+
+
+    /* Subtle hover */
+    .card:hover{
+      transform: translateY(-2px);
+      transition: transform .18s ease, box-shadow .18s ease;
+      box-shadow: 0 14px 32px rgba(0,0,0,.08) !important;
+    }
+/* Bigger, more prominent header logo */
+.brand img{
+  width: 68px !important;
+  height: 68px !important;
+}
+
+/* Balance spacing so header still feels premium */
+.header-inner{
+  padding: 16px 0 !important;
+}
+
+.brand{
+  gap: 16px !important;
+}
+
+/* Adjust text to sit well with larger logo */
+.brand .title strong{
+  font-size: 20px !important;
+  line-height: 1.1;
+}
+
+.brand .title span{
+  font-size: 13px !important;
+}
+@media (max-width: 520px){
+  .brand img{
+    width: 58px !important;
+    height: 58px !important;
+  }
+}
+   html { scroll-behavior: smooth; }
+
+/* Adjust this if your header height changes */
+:root { --header-offset: 92px; }
+
+section[id], main [id]{
+  scroll-margin-top: var(--header-offset);
+} 
+
+/* Header icon pills */
+.icon-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.10);
+  background: rgba(251,247,238,.70);
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+  font-weight: 700;
+  font-size: 13px;
+}
+.icon-pill .ico{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(52,183,178,.10);
+  border:1px solid rgba(0,0,0,.06);
+}
+.icon-pill svg{ width:18px; height:18px; fill: rgba(43,43,43,.86); }
+
+.icon-pill.primary{
+  background: linear-gradient(180deg,var(--teal) 0%, var(--teal-2) 100%);
+  color:#fff;
+  border-color: rgba(0,0,0,.05);
+}
+.icon-pill.primary .ico{
+  background: rgba(255,255,255,.16);
+  border-color: rgba(255,255,255,.18);
+}
+.icon-pill.primary svg{ fill: #fff; }
+
+/* Mobile: show icons only (clean) */
+@media (max-width: 520px){
+  .icon-pill .label{ display:none; }
+  .icon-pill{ padding:10px; }
+}
+
+
+
+/* ================= HEADER REVAMP ================= */
+
+.header-clean{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(251,247,238,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 16px 0;
+}
+
+/* Brand */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.brand img{
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.brand-text strong{
+  display:block;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height:1.1;
+}
+
+.brand-text span{
+  font-size: 13px;
+  opacity:.7;
+  letter-spacing:.02em;
+}
+
+/* Header actions */
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* Icon pills */
+.icon-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:999px;
+  background: rgba(255,255,255,.7);
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+}
+
+.icon-pill .ico{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,.04);
+}
+
+.icon-pill svg{
+  width:18px;
+  height:18px;
+  fill: rgba(43,43,43,.9);
+}
+
+/* WhatsApp primary */
+.icon-pill.primary{
+  background: linear-gradient(180deg,#25D366,#1ebd5a);
+  border-color: transparent;
+  box-shadow: 0 12px 26px rgba(37,211,102,.35);
+}
+
+.icon-pill.primary .ico{
+  background: rgba(255,255,255,.18);
+}
+
+.icon-pill.primary svg{
+  fill:#fff;
+}
+
+.icon-pill.primary .label{
+  color:#fff;
+  font-weight:700;
+  font-size:13px;
+  padding-right:6px;
+}
+
+/* Mobile */
+@media (max-width: 520px){
+  .brand img{
+    width: 60px;
+    height: 60px;
+  }
+
+  .brand-text span{
+    display:none;
+  }
+
+  .icon-pill .label{
+    display:none;
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
+<header class="header header-clean">
+  <div class="container header-inner">
+
+    <!-- Brand -->
+    <div class="brand">
+      <img src="assets/logo.png" alt="Barn Bakery Logo" />
+      <div class="brand-text">
+        <strong>Barn</strong>
+        <span>Home Bakery • Paippad</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="header-actions">
+      <a class="icon-pill" 
+         id="ig-link"
+         href="https://instagram.com/YOUR_HANDLE"
+         target="_blank"
+         aria-label="Instagram">
+        <span class="ico">
+          <!-- Instagram -->
+          <svg viewBox="0 0 24 24">
+            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm4.5 6a4.5 4.5 0 1 1 0 9a4.5 4.5 0 0 1 0-9Z"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="icon-pill primary"
+         id="wa-cta"
+         href="https://wa.me/91XXXXXXXXXX"
+         target="_blank"
+         aria-label="Order on WhatsApp">
+        <span class="ico">
+          <!-- WhatsApp -->
+          <svg viewBox="0 0 32 32">
+            <path d="M16 3C8.82 3 3 8.82 3 16c0 2.28.6 4.42 1.65 6.28L3 29l6.93-1.58A12.9 12.9 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3z"/>
+          </svg>
+        </span>
+        <span class="label">Order</span>
+      </a>
+    </div>
+
+  </div>
+</header>
+
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-card hero-left">
+        <div class="kicker">HOME BAKING • FRESHLY MADE</div>
+        <h1 class="h1">Desserts that feel like a celebration</h1>
+        <div class="tagline">Curating sweet memories</div>
+
+        <p class="hero-note">
+          Fresh, home-baked desserts made in small batches.
+          Swipe, filter, and tap WhatsApp to order.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#menu">Browse Menu</a>
+          <a class="btn" href="#special">Occasion Cakes</a>
+        </div>
+      </div>
+
+      <div class="hero-card shelf-hero">
+        <video autoplay muted loop playsinline src="assets/hero/hero-1.mp4"></video>
+        <div class="hero-badge">Paippad, Changanassery</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MENU ================= -->
+  <section class="section" id="menu">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Menu</h2>
+          <p class="section-sub">Use filters, then swipe sideways in any shelf.</p>
+        </div>
+      </div>
+
+      <!-- FILTER BAR -->
+      <div class="filter-bar" style="display:flex; gap:10px; flex-wrap:wrap; margin: 8px 0 18px;">
+        <button class="btn filter-btn primary" data-filter="all" type="button">All</button>
+        <button class="btn filter-btn" data-filter="cheesecakes" type="button">Cheesecakes</button>
+        <button class="btn filter-btn" data-filter="cakes" type="button">Cakes</button>
+        <button class="btn filter-btn" data-filter="cupcakes" type="button">Cupcakes</button>
+        <button class="btn filter-btn" data-filter="brownies-blondies" type="button">Brownies</button>
+        <button class="btn filter-btn" data-filter="dessert-jars" type="button">Dessert Jars</button>
+        <button class="btn filter-btn" data-filter="loaf-cakes" type="button">Loaf Cakes</button>
+        <button class="btn filter-btn" data-filter="tarts" type="button">Tarts</button>
+        <button class="btn filter-btn" data-filter="tres-leches" type="button">Tres Leches</button>
+        <button class="btn filter-btn" data-filter="pies" type="button">Pies</button>
+        <button class="btn filter-btn" data-filter="cookies" type="button">Cookies</button>
+        <button class="btn filter-btn" data-filter="special-occasion-cakes" type="button">Occasion Cakes</button>
+      </div>
+
+      <!-- ================= CHEESECAKES ================= -->
+      <section class="menu-section cat-block" data-category="cheesecakes">
+        <div class="section-head"><h3>Cheesecakes</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="cheesecakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cheesecakes/classic-cheesecake-1.jpg" alt="Classic Cheesecake">
+            </div>
+            <div class="card-body">
+              <h4>Classic Cheesecake</h4>
+              <div class="meta">
+                <span class="pill">Fresh order</span>
+                <button class="icon-btn" data-whatsapp-item="Classic Cheesecake" aria-label="Order Classic Cheesecake"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cheesecakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cheesecakes/blueberry-cheesecake-1.jpg" alt="Blueberry Cheesecake">
+            </div>
+            <div class="card-body">
+              <h4>Blueberry Cheesecake</h4>
+              <div class="meta">
+                <span class="pill">Fresh order</span>
+                <button class="icon-btn" data-whatsapp-item="Blueberry Cheesecake" aria-label="Order Blueberry Cheesecake"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cheesecakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cheesecakes/nutella-cheesecake-1.jpg" alt="Nutella Cheesecake">
+            </div>
+            <div class="card-body">
+              <h4>Nutella Cheesecake</h4>
+              <div class="meta">
+                <span class="pill">Fresh order</span>
+                <button class="icon-btn" data-whatsapp-item="Nutella Cheesecake" aria-label="Order Nutella Cheesecake"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cheesecakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cheesecakes/lotus-biscoff-cheesecake-1.jpg" alt="Lotus Biscoff Cheesecake">
+            </div>
+            <div class="card-body">
+              <h4>Lotus Biscoff Cheesecake</h4>
+              <div class="meta">
+                <span class="pill">Fresh order</span>
+                <button class="icon-btn" data-whatsapp-item="Lotus Biscoff Cheesecake" aria-label="Order Lotus Biscoff Cheesecake"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cheesecakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cheesecakes/strawberry-cheesecake-1.jpg" alt="Strawberry Cheesecake">
+            </div>
+            <div class="card-body">
+              <h4>Strawberry Cheesecake</h4>
+              <div class="meta">
+                <span class="pill">Fresh order</span>
+                <button class="icon-btn" data-whatsapp-item="Strawberry Cheesecake" aria-label="Order Strawberry Cheesecake"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cheesecakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cheesecakes/burnt-basque-cheesecake-1.jpg" alt="Burnt Basque Cheesecake">
+            </div>
+            <div class="card-body">
+              <h4>Burnt Basque Cheesecake</h4>
+              <div class="meta">
+                <span class="pill">Fresh order</span>
+                <button class="icon-btn" data-whatsapp-item="Burnt Basque Cheesecake" aria-label="Order Burnt Basque Cheesecake"></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= CAKES ================= -->
+      <section class="menu-section cat-block" data-category="cakes">
+        <div class="section-head"><h3>Cakes</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cakes/milkyway-1.jpg" alt="Milkyway Cake">
+            </div>
+            <div class="card-body">
+              <h4>Milkyway</h4>
+              <div class="meta">
+                <span class="pill">Custom size</span>
+                <button class="icon-btn" data-whatsapp-item="Milkyway Cake" aria-label="Order Milkyway"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cakes/dark_night-1.jpg" alt="Dark Night Cake">
+            </div>
+            <div class="card-body">
+              <h4>Dark Night</h4>
+              <div class="meta">
+                <span class="pill">Custom size</span>
+                <button class="icon-btn" data-whatsapp-item="Dark Night Cake" aria-label="Order Dark Night"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cakes/melscot-1.jpg" alt="Melscot Cake">
+            </div>
+            <div class="card-body">
+              <h4>Melscot</h4>
+              <div class="meta">
+                <span class="pill">Custom size</span>
+                <button class="icon-btn" data-whatsapp-item="Melscot Cake" aria-label="Order Melscot"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cakes/white_angel-1.jpg" alt="White Angel Cake">
+            </div>
+            <div class="card-body">
+              <h4>White Angel</h4>
+              <div class="meta">
+                <span class="pill">Custom size</span>
+                <button class="icon-btn" data-whatsapp-item="White Angel Cake" aria-label="Order White Angel"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cakes/strawberry_affair-1.jpg" alt="Strawberry Affair Cake">
+            </div>
+            <div class="card-body">
+              <h4>Strawberry Affair</h4>
+              <div class="meta">
+                <span class="pill">Custom size</span>
+                <button class="icon-btn" data-whatsapp-item="Strawberry Affair Cake" aria-label="Order Strawberry Affair"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cakes/oat_and_rains-1.jpg" alt="Oat & Rains Cake">
+            </div>
+            <div class="card-body">
+              <h4>Oat & Rains</h4>
+              <div class="meta">
+                <span class="pill">Custom size</span>
+                <button class="icon-btn" data-whatsapp-item="Oat & Rains Cake" aria-label="Order Oat & Rains"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cakes/burnt_basque_cheesecake-1.jpg" alt="Burnt Basque (Cake)">
+            </div>
+            <div class="card-body">
+              <h4>Burnt Basque</h4>
+              <div class="meta">
+                <span class="pill">Custom size</span>
+                <button class="icon-btn" data-whatsapp-item="Burnt Basque Cake" aria-label="Order Burnt Basque"></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= CUPCAKES ================= -->
+      <section class="menu-section cat-block" data-category="cupcakes">
+        <div class="section-head"><h3>Cupcakes</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="cupcakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cupcakes/double-chocolate-cupcake-1.jpg" alt="Double Chocolate Cupcake">
+            </div>
+            <div class="card-body">
+              <h4>Double Chocolate Cupcake</h4>
+              <div class="meta">
+                <span class="pill">Box orders</span>
+                <button class="icon-btn" data-whatsapp-item="Double Chocolate Cupcake" aria-label="Order Double Chocolate Cupcake"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cupcakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cupcakes/pistachio-rose-cupcake-1.jpg" alt="Pistachio Rose Cupcake">
+            </div>
+            <div class="card-body">
+              <h4>Pistachio Rose Cupcake</h4>
+              <div class="meta">
+                <span class="pill">Box orders</span>
+                <button class="icon-btn" data-whatsapp-item="Pistachio Rose Cupcake" aria-label="Order Pistachio Rose Cupcake"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cupcakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cupcakes/red-velvet-cupcake-1.jpg" alt="Red Velvet Cupcake">
+            </div>
+            <div class="card-body">
+              <h4>Red Velvet Cupcake</h4>
+              <div class="meta">
+                <span class="pill">Box orders</span>
+                <button class="icon-btn" data-whatsapp-item="Red Velvet Cupcake" aria-label="Order Red Velvet Cupcake"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cupcakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cupcakes/strawberry-cupcake-1.jpg" alt="Strawberry Cupcake">
+            </div>
+            <div class="card-body">
+              <h4>Strawberry Cupcake</h4>
+              <div class="meta">
+                <span class="pill">Box orders</span>
+                <button class="icon-btn" data-whatsapp-item="Strawberry Cupcake" aria-label="Order Strawberry Cupcake"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cupcakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cupcakes/white-chocolate-cupcake-1.jpg" alt="White Chocolate Cupcake">
+            </div>
+            <div class="card-body">
+              <h4>White Chocolate Cupcake</h4>
+              <div class="meta">
+                <span class="pill">Box orders</span>
+                <button class="icon-btn" data-whatsapp-item="White Chocolate Cupcake" aria-label="Order White Chocolate Cupcake"></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= COOKIES ================= -->
+      <section class="menu-section cat-block" data-category="cookies">
+        <div class="section-head"><h3>Cookies</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="cookies">
+            <div class="media">
+              <img data-srcs="assets/menu/cookies/chocolate-chip-1.jpg" alt="Chocolate Chip Cookie">
+            </div>
+            <div class="card-body">
+              <h4>Chocolate Chip</h4>
+              <div class="meta">
+                <span class="pill">Fresh batch</span>
+                <button class="icon-btn" data-whatsapp-item="Chocolate Chip Cookie" aria-label="Order Chocolate Chip Cookie"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cookies">
+            <div class="media">
+              <img data-srcs="assets/menu/cookies/butter-cashew-1.jpg" alt="Butter Cashew Cookie">
+            </div>
+            <div class="card-body">
+              <h4>Butter Cashew</h4>
+              <div class="meta">
+                <span class="pill">Fresh batch</span>
+                <button class="icon-btn" data-whatsapp-item="Butter Cashew Cookie" aria-label="Order Butter Cashew Cookie"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="cookies">
+            <div class="media">
+              <img data-srcs="assets/menu/cookies/oat-and-rains-1.jpg" alt="Oat & Rains Cookie">
+            </div>
+            <div class="card-body">
+              <h4>Oat & Rains</h4>
+              <div class="meta">
+                <span class="pill">Fresh batch</span>
+                <button class="icon-btn" data-whatsapp-item="Oat & Rains Cookie" aria-label="Order Oat & Rains Cookie"></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= BROWNIES / BLONDIES ================= -->
+      <section class="menu-section cat-block" data-category="brownies-blondies">
+        <div class="section-head"><h3>Brownies & Blondies</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="brownies-blondies">
+            <div class="media">
+              <img data-srcs="assets/menu/brownies-blondies/caramel-brownie-1.jpg" alt="Caramel Brownie">
+            </div>
+            <div class="card-body">
+              <h4>Caramel Brownie</h4>
+              <div class="meta">
+                <span class="pill">Rich & fudgy</span>
+                <button class="icon-btn" data-whatsapp-item="Caramel Brownie" aria-label="Order Caramel Brownie"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="brownies-blondies">
+            <div class="media">
+              <img data-srcs="assets/menu/brownies-blondies/hazlenut-brownie-1.jpg"
+                   data-videos=""
+                   alt="Hazlenut Brownie">
+            </div>
+            <div class="card-body">
+              <h4>Hazlenut Brownie</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Hazlenut Brownie" aria-label="Order Hazlenut Brownie"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="brownies-blondies">
+            <div class="media">
+              <img data-srcs="assets/menu/brownies-blondies/double-chocolate-blondie-1.jpg" alt="Double Chocolate Blondie">
+            </div>
+            <div class="card-body">
+              <h4>Double Chocolate Blondie</h4>
+              <div class="meta">
+                <span class="pill">Rich</span>
+                <button class="icon-btn" data-whatsapp-item="Double Chocolate Blondie" aria-label="Order Double Chocolate Blondie"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="brownies-blondies">
+            <div class="media">
+              <img data-srcs="assets/menu/brownies-blondies/white-chocolate-blondie-1.jpg" alt="White Chocolate Blondie">
+            </div>
+            <div class="card-body">
+              <h4>White Chocolate Blondie</h4>
+              <div class="meta">
+                <span class="pill">Rich</span>
+                <button class="icon-btn" data-whatsapp-item="White Chocolate Blondie" aria-label="Order White Chocolate Blondie"></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= DESSERT JARS ================= -->
+      <section class="menu-section cat-block" data-category="dessert-jars">
+        <div class="section-head"><h3>Dessert Jars</h3></div>
+        <div class="shelf">
+
+          <article class="card" data-category="dessert-jars">
+            <div class="media">
+              <img data-srcs="assets/menu/dessert-jars/jarcakes-1.jpg" alt="Jar Cakes">
+            </div>
+            <div class="card-body">
+              <h4>Jar Cakes</h4>
+              <div class="meta">
+                <span class="pill">Single serve</span>
+                <button class="icon-btn" data-whatsapp-item="Jar Cakes" aria-label="Order Jar Cakes"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="dessert-jars">
+            <div class="media">
+              <img data-srcs="assets/menu/dessert-jars/strawberry-tiramisu-1.jpg" alt="Strawberry Tiramisu">
+            </div>
+            <div class="card-body">
+              <h4>Strawberry Tiramisu</h4>
+              <div class="meta">
+                <span class="pill">Single serve</span>
+                <button class="icon-btn" data-whatsapp-item="Strawberry Tiramisu" aria-label="Order Strawberry Tiramisu"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="dessert-jars">
+            <div class="media">
+              <img data-srcs="assets/menu/dessert-jars/tiramisu-1.jpg"
+                   data-videos="assets/menu/dessert-jars/tiramisu-1.mp4"
+                   alt="Tiramisu">
+            </div>
+            <div class="card-body">
+              <h4>Tiramisu</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Tiramisu Jar" aria-label="Order Tiramisu"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="dessert-jars">
+            <div class="media">
+              <img data-srcs="assets/menu/dessert-jars/triochocolate-1.jpg"
+                   data-videos="assets/menu/dessert-jars/triochocolate-1.mp4"
+                   alt="Trio Chocolate">
+            </div>
+            <div class="card-body">
+              <h4>Trio Chocolate</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Trio Chocolate Jar" aria-label="Order Trio Chocolate"></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Video-only items use placeholder image -->
+          <article class="card" data-category="dessert-jars">
+            <div class="media">
+              <img data-srcs="assets/menu/cookies/comingsoon%20placeholder.jpg"
+                   data-videos="assets/menu/dessert-jars/millionare-tub-1.mp4"
+                   alt="Millionaire Tub">
+            </div>
+            <div class="card-body">
+              <h4>Millionaire Tub</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Millionaire Tub" aria-label="Order Millionaire Tub"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="dessert-jars">
+            <div class="media">
+              <img data-srcs="assets/menu/cookies/comingsoon%20placeholder.jpg"
+                   data-videos="assets/menu/dessert-jars/mango-white-chocolate-mousse-1.mp4"
+                   alt="Mango White Chocolate Mousse">
+            </div>
+            <div class="card-body">
+              <h4>Mango White Chocolate Mousse</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Mango White Chocolate Mousse" aria-label="Order Mango White Chocolate Mousse"></button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ================= LOAF CAKES ================= -->
+      <section class="menu-section cat-block" data-category="loaf-cakes">
+        <div class="section-head"><h3>Loaf Cakes</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="loaf-cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/loaf-cakes/butter-cashew-1.jpg" alt="Butter Cashew Loaf">
+            </div>
+            <div class="card-body">
+              <h4>Butter Cashew Loaf</h4>
+              <div class="meta">
+                <span class="pill">Tea time</span>
+                <button class="icon-btn" data-whatsapp-item="Butter Cashew Loaf Cake" aria-label="Order Butter Cashew Loaf"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="loaf-cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/loaf-cakes/carrot-dates-loaf-1.jpg" alt="Carrot Dates Loaf">
+            </div>
+            <div class="card-body">
+              <h4>Carrot Dates Loaf</h4>
+              <div class="meta">
+                <span class="pill">Tea time</span>
+                <button class="icon-btn" data-whatsapp-item="Carrot Dates Loaf Cake" aria-label="Order Carrot Dates Loaf"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="loaf-cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/loaf-cakes/dry-fruit-loaf-1.jpg" alt="Dry Fruit Loaf">
+            </div>
+            <div class="card-body">
+              <h4>Dry Fruit Loaf</h4>
+              <div class="meta">
+                <span class="pill">Tea time</span>
+                <button class="icon-btn" data-whatsapp-item="Dry Fruit Loaf Cake" aria-label="Order Dry Fruit Loaf"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="loaf-cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cookies/comingsoon%20placeholder.jpg"
+                   data-videos="assets/menu/loaf-cakes/eggless-ghee-loaf-1.mp4"
+                   alt="Eggless Ghee Loaf">
+            </div>
+            <div class="card-body">
+              <h4>Eggless Ghee Loaf</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Eggless Ghee Loaf Cake" aria-label="Order Eggless Ghee Loaf"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="loaf-cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/cookies/comingsoon%20placeholder.jpg"
+                   data-videos="assets/menu/loaf-cakes/orange-loaf-1.mp4"
+                   alt="Orange Loaf">
+            </div>
+            <div class="card-body">
+              <h4>Orange Loaf</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Orange Loaf Cake" aria-label="Order Orange Loaf"></button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ================= TARTS ================= -->
+      <section class="menu-section cat-block" data-category="tarts">
+        <div class="section-head"><h3>Tarts</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="tarts">
+            <div class="media">
+              <img data-srcs="assets/menu/tarts/caramel-tart-1.jpg"
+                   data-videos=""
+                   alt="Caramel Tart">
+            </div>
+            <div class="card-body">
+              <h4>Caramel Tart</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Caramel Tart" aria-label="Order Caramel Tart"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="tarts">
+            <div class="media">
+              <img data-srcs="assets/menu/tarts/chocolate-tart-1.jpg" alt="Chocolate Tart">
+            </div>
+            <div class="card-body">
+              <h4>Chocolate Tart</h4>
+              <div class="meta">
+                <span class="pill">Buttery crust</span>
+                <button class="icon-btn" data-whatsapp-item="Chocolate Tart" aria-label="Order Chocolate Tart"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="tarts">
+            <div class="media">
+              <img data-srcs="assets/menu/tarts/custard-strawberry-tart-1.jpg" alt="Custard Strawberry Tart">
+            </div>
+            <div class="card-body">
+              <h4>Custard Strawberry Tart</h4>
+              <div class="meta">
+                <span class="pill">Buttery crust</span>
+                <button class="icon-btn" data-whatsapp-item="Custard Strawberry Tart" aria-label="Order Custard Strawberry Tart"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="tarts">
+            <div class="media">
+              <img data-srcs="assets/menu/tarts/lemon-tart-1.jpg"
+                   data-videos=""
+                   alt="Lemon Tart">
+            </div>
+            <div class="card-body">
+              <h4>Lemon Tart</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Lemon Tart" aria-label="Order Lemon Tart"></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= TRES LECHES ================= -->
+      <section class="menu-section cat-block" data-category="tres-leches">
+        <div class="section-head"><h3>Tres Leches</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="tres-leches">
+            <div class="media">
+              <img data-srcs="assets/menu/tres-leches/classic-1.jpg"
+                   data-videos=""
+                   alt="Classic Tres Leches">
+            </div>
+            <div class="card-body">
+              <h4>Classic Tres Leches</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Classic Tres Leches" aria-label="Order Classic Tres Leches"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="tres-leches">
+            <div class="media">
+              <img data-srcs="assets/menu/tres-leches/pistachio-1.jpg"
+                   data-videos=""
+                   alt="Pistachio Tres Leches">
+            </div>
+            <div class="card-body">
+              <h4>Pistachio Tres Leches</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Pistachio Tres Leches" aria-label="Order Pistachio Tres Leches"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="tres-leches">
+            <div class="media">
+              <img data-srcs="assets/menu/tres-leches/rosemilk-1.jpg" alt="Rosemilk Tres Leches">
+            </div>
+            <div class="card-body">
+              <h4>Rosemilk Tres Leches</h4>
+              <div class="meta">
+                <span class="pill">Fresh order</span>
+                <button class="icon-btn" data-whatsapp-item="Rosemilk Tres Leches" aria-label="Order Rosemilk Tres Leches"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="tres-leches">
+            <div class="media">
+              <img data-srcs="assets/menu/tres-leches/mango-1.jpg"
+                   data-videos=""
+                   alt="Mango Tres Leches">
+            </div>
+            <div class="card-body">
+              <h4>Mango Tres Leches</h4>
+              <div class="meta">
+                <span class="pill">Video</span>
+                <button class="icon-btn" data-whatsapp-item="Mango Tres Leches" aria-label="Order Mango Tres Leches"></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 
+      <section class="menu-section cat-block" data-category="pies">
+        <div class="section-head"><h3>Pies</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="pies">
+            <div class="media">
+              <img data-srcs="assets/menu/pies/apple-pie-1.jpg" alt="Apple Pie">
+            </div>
+            <div class="card-body">
+              <h4>Apple Pie</h4>
+              <div class="meta">
+                <span class="pill">Classic</span>
+                <button class="icon-btn" data-whatsapp-item="Apple Pie" aria-label="Order Apple Pie"></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>-->
+
+      <!-- ================= SPECIAL OCCASION CAKES ================= -->
+      <section class="menu-section cat-block" data-category="special-occasion-cakes" id="special">
+        <div class="section-head"><h3>Special Occasion Cakes</h3></div>
+        <div class="shelf">
+          <article class="card" data-category="special-occasion-cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/special-occasion-cakes/special-occasion-cakes-1.jpg" alt="Special Occasion Cake 1">
+            </div>
+            <div class="card-body">
+              <h4>Occasion Cake – Design 1</h4>
+              <div class="meta">
+                <span class="pill">Pre-order</span>
+                <button class="icon-btn" data-whatsapp-item="Special Occasion Cake - Design 1" aria-label="Order Occasion Cake Design 1"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="special-occasion-cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/special-occasion-cakes/special-occasion-cakes-2.jpg" alt="Special Occasion Cake 2">
+            </div>
+            <div class="card-body">
+              <h4>Occasion Cake – Design 2</h4>
+              <div class="meta">
+                <span class="pill">Pre-order</span>
+                <button class="icon-btn" data-whatsapp-item="Special Occasion Cake - Design 2" aria-label="Order Occasion Cake Design 2"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="special-occasion-cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/special-occasion-cakes/special-occasion-cakes-3.jpg" alt="Special Occasion Cake 3">
+            </div>
+            <div class="card-body">
+              <h4>Occasion Cake – Design 3</h4>
+              <div class="meta">
+                <span class="pill">Pre-order</span>
+                <button class="icon-btn" data-whatsapp-item="Special Occasion Cake - Design 3" aria-label="Order Occasion Cake Design 3"></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-category="special-occasion-cakes">
+            <div class="media">
+              <img data-srcs="assets/menu/special-occasion-cakes/special-occasion-cakes-4.jpg" alt="Special Occasion Cake 4">
+            </div>
+            <div class="card-body">
+              <h4>Occasion Cake – Design 4</h4>
+              <div class="meta">
+                <span class="pill">Pre-order</span>
+                <button class="icon-btn" data-whatsapp-item="Special Occasion Cake - Design 4" aria-label="Order Occasion Cake Design 4"></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </section>
+</main>
+
+
+  <!-- ===== Existing JS from your file (kept) + tiny optional badge helper (disabled by default) ===== -->
+  <script>
+    // ---- CONFIG: set these ----
+    const WHATSAPP_NUMBER = "918714870987"; // <-- replace with your number (country code + number)
+    const INSTAGRAM_URL = "https://www.instagram.com/thebakersbaarn/"; // <-- replace with your IG
+    const BRAND_NAME = "The Baker's Barn";
+
+    // Header CTA links
+    const waCta = document.getElementById("wa-cta");
+    const igLink = document.getElementById("ig-link");
+    if (waCta) waCta.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi! I’d like to place an order from ${BRAND_NAME}.`)}`;
+    if (igLink) igLink.href = INSTAGRAM_URL;
+
+    // Hero video fallback
+    const heroVideo = document.getElementById("heroVideo");
+    const heroFallback = document.getElementById("heroFallback");
+    if (heroVideo) {
+      heroVideo.addEventListener("error", () => {
+        if (heroFallback) heroFallback.style.display = "block";
+        heroVideo.style.display = "none";
+      });
+    }
+
+    // Resolve first valid src from data-srcs / data-videos lists (comma-separated)
+    function pickFirstWorkingUrl(urlList) {
+      if (!urlList) return null;
+      const urls = urlList.split(",").map(s => s.trim()).filter(Boolean);
+      return urls.length ? urls : null;
+    }
+
+    // Replace <img data-videos="..."> with video if exists; otherwise keep as img
+    function initCards() {
+      document.querySelectorAll(".media").forEach(media => {
+        const img = media.querySelector("img[data-srcs]");
+        if (!img) return;
+
+        const imgCandidates = pickFirstWorkingUrl(img.getAttribute("data-srcs"));
+        const videoCandidates = pickFirstWorkingUrl(img.getAttribute("data-videos"));
+
+        // Set a default image candidate (first) immediately
+        if (imgCandidates && imgCandidates[0]) img.src = imgCandidates[0];
+
+        // Try fallbacks on error
+        if (imgCandidates && imgCandidates.length > 1) {
+          let idx = 0;
+          img.addEventListener("error", () => {
+            idx++;
+            if (idx < imgCandidates.length) img.src = imgCandidates[idx];
+          });
+        }
+
+        // If there is video candidates, build a video element + play overlay
+        if (videoCandidates && videoCandidates.length) {
+          const v = document.createElement("video");
+          v.setAttribute("playsinline", "");
+          v.setAttribute("preload", "metadata");
+          v.muted = true; // allow inline play on mobile
+          v.loop = true;
+          v.controls = false;
+
+          // Attempt video sources with fallbacks
+          let vidIdx = 0;
+          v.src = videoCandidates[vidIdx];
+          v.addEventListener("error", () => {
+            vidIdx++;
+            if (vidIdx < videoCandidates.length) v.src = videoCandidates[vidIdx];
+          });
+
+          // Build overlay
+          const overlay = document.createElement("div");
+          overlay.className = "play-overlay";
+          overlay.innerHTML = `
+            <div class="play-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+            </div>
+          `;
+
+          const badge = document.createElement("div");
+          badge.className = "video-badge";
+          badge.textContent = "Video";
+
+          // On tap/click: toggle play/pause
+          overlay.addEventListener("click", async () => {
+            try {
+              if (v.paused) {
+                await v.play();
+                media.classList.add("is-playing");
+              } else {
+                v.pause();
+                media.classList.remove("is-playing");
+              }
+            } catch (e) {
+              // ignore
+            }
+          });
+
+          // Keep existing image as fallback behind video
+          media.insertBefore(v, img);
+          media.appendChild(overlay);
+          media.appendChild(badge);
+        }
+      });
+    }
+
+    // WhatsApp buttons
+    function initWhatsAppButtons() {
+      document.querySelectorAll("[data-whatsapp-item]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const item = btn.getAttribute("data-whatsapp-item") || "Item";
+          const msg = `Hi! I’d like to order: ${item} from ${BRAND_NAME}.`;
+          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+        });
+      });
+    }
+
+    // Floating WhatsApp
+    function addFloatingWhatsApp() {
+      if (document.querySelector(".wa-float")) return;
+
+      const a = document.createElement("a");
+      a.className = "wa-float";
+      a.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi! I’d like to place an order from ${BRAND_NAME}.`)}`;
+      a.target = "_blank";
+      a.rel = "noreferrer";
+      a.innerHTML = `
+        <span>Order on WhatsApp</span>
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.62c-.26-.13-1.55-.76-1.79-.85-.24-.09-.42-.13-.60.13-.18.26-.69.85-.84 1.02-.15.18-.31.20-.57.07-.26-.13-1.10-.40-2.10-1.28-.78-.69-1.31-1.54-1.47-1.80-.15-.26-.02-.40.11-.53.11-.11.26-.31.40-.47.13-.15.18-.26.26-.44.09-.18.04-.33-.02-.47-.07-.13-.60-1.44-.82-1.97-.22-.53-.44-.44-.60-.44h-.51c-.18 0-.47.07-.71.33-.24.26-.93.91-.93 2.22 0 1.31.96 2.57 1.09 2.75.13.18 1.89 2.88 4.58 4.04.64.28 1.14.45 1.53.58.64.20 1.23.17 1.69.10.52-.08 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24-.07-.11-.24-.18 -.51 -.31zM16 3C8.82 3 3 8.82 3 16c0 2.28 .60 4.42 1.65 6.28L3 29l6.93 -1.58A12.9 12.9 0 0 0 16 29c7.18 0 13 -5.82 13 -13S23.18 3 16 3z"/></svg>
+      `;
+      document.body.appendChild(a);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initCards();
+      initWhatsAppButtons();
+      addFloatingWhatsApp();
+    });
+
+    // Optional: subtle price badge without editing HTML.
+    // If you want real prices later, add data-price="₹499" on any <article class="card">.
+    (function(){
+      const DEFAULT_BADGE = ""; // set to "DM for price" if you want badges everywhere
+      if (!DEFAULT_BADGE) return;
+      document.querySelectorAll(".card").forEach(card=>{
+        if (card.hasAttribute("data-price")) return;
+        card.setAttribute("data-price", DEFAULT_BADGE);
+      });
+    })();
+
+
+
+    // ---- Category filtering ----
+function initFilters(){
+  const buttons = document.querySelectorAll(".filter-btn");
+  const blocks = document.querySelectorAll(".cat-block");
+
+  function setActive(btn){
+    buttons.forEach(b => b.classList.remove("primary"));
+    btn.classList.add("primary");
+  }
+
+  function apply(filter){
+    blocks.forEach(block => {
+      const cat = block.getAttribute("data-category");
+      block.style.display = (filter === "all" || filter === cat) ? "" : "none";
+    });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter");
+      setActive(btn);
+      apply(filter);
+    });
+  });
+
+  apply("all");
+}
+
+// call it
+initFilters();
+
+
+
+(function initTopNavFix(){
+  const header = document.querySelector(".header");
+  const getOffset = () => (header ? header.getBoundingClientRect().height + 14 : 92);
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+
+      const el = document.querySelector(id);
+      if (!el) return;
+
+      e.preventDefault();
+
+      const y = window.scrollY + el.getBoundingClientRect().top - getOffset();
+      window.scrollTo({ top: y, behavior: "smooth" });
+
+      // close any focus states
+      a.blur();
+    });
+  });
+})();
+
+  </script>
+</body>
+</html>

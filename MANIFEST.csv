@@ -1,0 +1,42 @@
+category,item,type,source_file,output_path
+cheesecakes,Nutella Cheese Cake,image,CheeseCakes.jpg,assets/menu/cheesecakes/nutella-cheese-cake-1.jpg
+cheesecakes,Lotus Biscoff CheeseCake,image,CheeseCakes.jpg,assets/menu/cheesecakes/lotus-biscoff-cheesecake-1.jpg
+cheesecakes,Strawberry Cheese Cake,image,CheeseCakes.jpg,assets/menu/cheesecakes/strawberry-cheese-cake-1.jpg
+cakes,Milkyway,image,CheeseCakes.jpg,assets/menu/cakes/milkyway-1.jpg
+cakes,Milkyway,video,MSB.mp4,assets/menu/cakes/milkyway-1.mp4
+cakes,Darknight,image,CheeseCakes.jpg,assets/menu/cakes/darknight-1.jpg
+cakes,Melscot,image,burnbasCake.jpg,assets/menu/cakes/melscot-1.jpg
+cakes,White Angel,image,CheeseCakes.jpg,assets/menu/cakes/white-angel-1.jpg
+cakes,Strawberry Affair,image,CheeseCakes.jpg,assets/menu/cakes/strawberry-affair-1.jpg
+special-occasion-cakes,Special Occasion Cakes,image,Dinobday.jpg,assets/menu/special-occasion-cakes/special-occasion-cakes-1.jpg
+brownies-blondies,Hazlenut Brownie,image,(placeholder),assets/menu/brownies-blondies/hazlenut-brownie-1.jpg
+brownies-blondies,Hazlenut Brownie,video,HazleBrownie.mp4,assets/menu/brownies-blondies/hazlenut-brownie-1.mp4
+brownies-blondies,Caramel Brownie,image,caramelbrownie.avif,assets/menu/brownies-blondies/caramel-brownie-1.jpg
+brownies-blondies,White Chocolate Blondie,image,Blondie.avif,assets/menu/brownies-blondies/white-chocolate-blondie-1.jpg
+brownies-blondies,Double Chocolate Blondie,image,DOuble Chcoclate.avif,assets/menu/brownies-blondies/double-chocolate-blondie-1.jpg
+loaf-cakes,Orange Loaf,image,ChocoOrange.jpg,assets/menu/loaf-cakes/orange-loaf-1.jpg
+loaf-cakes,Orange Loaf,video,OrangeLoaf.mp4,assets/menu/loaf-cakes/orange-loaf-1.mp4
+loaf-cakes,Dry Fruit Loaf,image,(placeholder),assets/menu/loaf-cakes/dry-fruit-loaf-1.jpg
+loaf-cakes,Carrot Dates Loaf,image,(placeholder),assets/menu/loaf-cakes/carrot-dates-loaf-1.jpg
+loaf-cakes,Carrot Dates Loaf,video,EgglessGheeLoaf.mp4,assets/menu/loaf-cakes/carrot-dates-loaf-1.mp4
+loaf-cakes,Butter Cashew,image,(placeholder),assets/menu/loaf-cakes/butter-cashew-1.jpg
+tarts,Caramel Tart,image,Classic Butter Scotch Tart.jpg,assets/menu/tarts/caramel-tart-1.jpg
+tarts,Caramel Tart,video,RaisinnutCaramelTart.mp4,assets/menu/tarts/caramel-tart-1.mp4
+tarts,Chocolate Tart,image,(placeholder),assets/menu/tarts/chocolate-tart-1.jpg
+tarts,Lemon Tart,image,(placeholder),assets/menu/tarts/lemon-tart-1.jpg
+tarts,Lemon Tart,video,LemonTart.mp4,assets/menu/tarts/lemon-tart-1.mp4
+tarts,Custard Strawberry Tart,image,(placeholder),assets/menu/tarts/custard-strawberry-tart-1.jpg
+tres-leches,Classic,image,Classic Butter Scotch Tart.jpg,assets/menu/tres-leches/classic-1.jpg
+tres-leches,Classic,video,ClassicLesTreches.mp4,assets/menu/tres-leches/classic-1.mp4
+tres-leches,RoseMilk,image,(placeholder),assets/menu/tres-leches/rosemilk-1.jpg
+tres-leches,Pistachio,image,Pistachio Brownies.jpg,assets/menu/tres-leches/pistachio-1.jpg
+tres-leches,Pistachio,video,PistachioKunafaTub.mp4,assets/menu/tres-leches/pistachio-1.mp4
+dessert-jars,Tiramisu,image,(placeholder),assets/menu/dessert-jars/tiramisu-1.jpg
+dessert-jars,Tiramisu,video,Tiramisu.mp4,assets/menu/dessert-jars/tiramisu-1.mp4
+dessert-jars,TrioChocolate,image,(placeholder),assets/menu/dessert-jars/triochocolate-1.jpg
+dessert-jars,TrioChocolate,video,TripleChocolate.mp4,assets/menu/dessert-jars/triochocolate-1.mp4
+dessert-jars,JarCakes,image,(placeholder),assets/menu/dessert-jars/jarcakes-1.jpg
+cookies,Chocolate Chip,image,ChocoChip.jpg,assets/menu/cookies/chocolate-chip-1.jpg
+cookies,Butter Cashew,image,(placeholder),assets/menu/cookies/butter-cashew-1.jpg
+cookies,Oat and Rains,image,(placeholder),assets/menu/cookies/oat-and-rains-1.jpg
+pies,Apple Pie,image,(placeholder),assets/menu/pies/apple-pie-1.jpg
