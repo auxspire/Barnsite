@@ -1,0 +1,12 @@
+# Force track assets
+!assets/
+!assets/**
+
+# Force track common asset types
+!*.png
+!*.jpg
+!*.jpeg
+!*.webp
+!*.svg
+!*.gif
+!*.mp4

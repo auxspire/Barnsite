@@ -111,6 +111,99 @@
     .poster{aspect-ratio:1/1; background:#f2efe7;}
     .poster img{width:100%; height:100%; object-fit:cover; display:block;}
 
+
+
+/* HERO IMAGE: force "show full image" and prevent cover-cropping */
+.hero-grid { align-items: start !important; }
+
+.hero .shelf-hero{
+  align-self: start !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+/* override any global .media img/video absolute-cover rules */
+.hero .shelf-hero img{
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 520px !important;      /* tweak if needed */
+  object-fit: contain !important;     /* NO crop */
+  display: block !important;
+}
+
+/* badge stays on image */
+.hero .shelf-hero{ position: relative !important; }
+.hero .shelf-hero .hero-badge{
+  position: absolute !important;
+  left: 14px !important;
+  bottom: 14px !important;
+}
+
+/* mobile */
+@media (max-width: 520px){
+  .hero .shelf-hero img{ max-height: 320px !important; }
+}
+
+/* ===== HERO: show full image & let container shrink to image ===== */
+.hero .shelf-hero{
+  aspect-ratio: auto !important; /* remove fixed box */
+  height: auto !important;
+  background: transparent !important;
+}
+
+/* override the global rule: height:100% + cover is the cropper */
+.hero .shelf-hero img{
+  width: 100% !important;
+  height: auto !important;          /* key */
+  object-fit: contain !important;    /* key */
+  max-height: 520px !important;
+  display: block !important;
+}
+
+/* If you ever swap to video in hero, keep it consistent */
+.hero .shelf-hero video{
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  max-height: 520px !important;
+  display: block !important;
+}
+
+/* Align hero cards to same height */
+.hero-grid{
+  align-items: stretch !important;
+}
+
+/* Make both hero cards stretch cleanly */
+.hero-card{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Keep left padding and allow it to fill */
+.hero-left{
+  flex: 1;
+}
+
+/* Make the right image fill the card height */
+.hero .shelf-hero{
+  flex: 1;
+  aspect-ratio: auto !important; /* override earlier shrink */
+}
+
+/* Fill the available height without cropping */
+.hero .shelf-hero img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;  /* looks best when matching heights */
+  display: block !important;
+}
+
+
     /* Sections */
     .section{padding:22px 0;}
     .section-title{display:flex; align-items:center; justify-content:space-between; gap:12px; margin: 6px 0 14px;}
@@ -607,6 +700,201 @@ section[id], main [id]{
 .icon-pill.primary svg{
   fill:#fff !important;
 }
+/* ================= Bakehouse Gallery ================= */
+
+.bakehouse .section-sub{ max-width: 54ch; }
+
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.shot{
+  grid-column: span 4;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255,255,255,.6);
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+}
+
+.shot img{
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+}
+
+/* Make first image larger (hero tile) */
+.shot:first-child{ grid-column: span 8; }
+.shot:first-child img{ height: 300px; }
+
+/* Tablet */
+@media (max-width: 900px){
+  .shot{ grid-column: span 6; }
+  .shot:first-child{ grid-column: span 12; }
+  .shot img{ height: 220px; }
+  .shot:first-child img{ height: 260px; }
+}
+
+/* Mobile: swipeable carousel feel */
+@media (max-width: 520px){
+  .gallery{
+    grid-auto-flow: column;
+    grid-auto-columns: 82%;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+  .shot{
+    grid-column: unset;
+    scroll-snap-align: start;
+  }
+  .shot img{ height: 230px; }
+}
+
+/* Lightbox */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,.72);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 999;
+}
+
+.lightbox.open{ display: flex; }
+
+.lb-img{
+  max-width: min(1100px, 96vw);
+  max-height: 86vh;
+  border-radius: 18px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.5);
+}
+
+.lb-close{
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-size: 18px;
+}
+/* ================= Bakehouse Carousel ================= */
+
+.carousel{
+  position: relative;
+  margin-top: 14px;
+}
+
+.car-track{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,.06);
+  background: rgba(255,255,255,.55);
+  box-shadow: 0 12px 26px rgba(0,0,0,.06);
+  scrollbar-width: none;
+}
+.car-track::-webkit-scrollbar{ display:none; }
+
+.car-slide{
+  scroll-snap-align: start;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+.car-slide img{
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+/* soft fade edges (nice premium look) */
+.carousel::before,
+.carousel::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom: 32px; /* keep dots visible */
+  width: 34px;
+  pointer-events:none;
+  z-index: 2;
+}
+.carousel::before{
+  left: 0;
+  background: linear-gradient(90deg, rgba(251,247,238,.95), rgba(251,247,238,0));
+}
+.carousel::after{
+  right: 0;
+  background: linear-gradient(270deg, rgba(251,247,238,.95), rgba(251,247,238,0));
+}
+
+/* Buttons */
+.car-btn{
+  position:absolute;
+  top: 50%;
+  transform: translateY(-55%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 10px 22px rgba(0,0,0,.10);
+  font-size: 26px;
+  line-height: 1;
+  z-index: 3;
+}
+.car-btn.prev{ left: 10px; }
+.car-btn.next{ right: 10px; }
+
+.car-btn:disabled{
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+/* Dots */
+.car-dots{
+  display:flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+.car-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.18);
+  background: rgba(255,255,255,.65);
+  opacity: .7;
+}
+.car-dot.active{
+  width: 22px;
+  opacity: 1;
+  background: rgba(0,0,0,.18);
+}
+
+/* Mobile height */
+@media (max-width: 520px){
+  .car-slide img{ height: 260px; }
+  .car-btn{ display:none; } /* swipe-only on mobile */
+  .carousel::before, .carousel::after{ bottom: 28px; }
+}
 
   </style>
 </head>
@@ -680,11 +968,51 @@ section[id], main [id]{
       </div>
 
       <div class="hero-card shelf-hero">
-        <video autoplay muted loop playsinline src="assets/hero/hero-1.mp4"></video>
+       <img src="assets\hero\hero-1.jpg" alt="Bakehouse view 1" loading="lazy">
         <div class="hero-badge">Paippad, Changanassery</div>
       </div>
     </div>
   </section>
+  <!-- ================= bakehouse view ================= -->
+
+<section class="section bakehouse" id="bakehouse">
+  <div class="container">
+    <div class="section-title">
+      <h2>Inside The Baker’s Barn</h2>
+      <p class="section-sub">A quick look at our bakehouse & display space.</p>
+    </div>
+
+    <div class="carousel" data-carousel="bakehouse">
+      <button class="car-btn prev" type="button" aria-label="Previous">‹</button>
+
+      <div class="car-track" tabindex="0" aria-label="Bakehouse photos">
+        <figure class="car-slide">
+          <img src="assets/bakehouse/1.jpg" alt="Bakehouse photo 1" loading="lazy" />
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/bakehouse/2.jpg" alt="Bakehouse photo 2" loading="lazy" />
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/bakehouse/3.jpg" alt="Bakehouse photo 3" loading="lazy" />
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/bakehouse/4.jpg" alt="Bakehouse photo 4" loading="lazy" />
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/bakehouse/5.jpg" alt="Bakehouse photo 5" loading="lazy" />
+        </figure>
+        <figure class="car-slide">
+          <img src="assets/bakehouse/6.jpg" alt="Bakehouse photo 6" loading="lazy" />
+        </figure>
+      </div>
+
+      <button class="car-btn next" type="button" aria-label="Next">›</button>
+
+      <div class="car-dots" aria-label="Carousel dots"></div>
+    </div>
+  </div>
+</section>
+
 
   <!-- ================= MENU ================= -->
   <section class="section" id="menu">
@@ -1651,6 +1979,95 @@ initFilters();
       // close any focus states
       a.blur();
     });
+  });
+})();
+// Bakehouse lightbox
+(function initBakehouseLightbox(){
+  const gallery = document.getElementById("bakehouseGallery");
+  const lb = document.getElementById("lightbox");
+  if (!gallery || !lb) return;
+
+  const lbImg = lb.querySelector(".lb-img");
+  const closeBtn = lb.querySelector(".lb-close");
+
+  function open(src, alt){
+    lbImg.src = src;
+    lbImg.alt = alt || "Bakehouse photo";
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden", "false");
+  }
+
+  function close(){
+    lb.classList.remove("open");
+    lb.setAttribute("aria-hidden", "true");
+    lbImg.src = "";
+  }
+
+  gallery.addEventListener("click", (e) => {
+    const img = e.target.closest("img");
+    if (!img) return;
+    open(img.src, img.alt);
+  });
+
+  closeBtn.addEventListener("click", close);
+  lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+})();
+
+
+// Bakehouse Carousel: arrows + dots + active slide
+(function initCarousel(){
+  document.querySelectorAll('[data-carousel="bakehouse"]').forEach(root => {
+    const track = root.querySelector(".car-track");
+    const slides = Array.from(root.querySelectorAll(".car-slide"));
+    const prev = root.querySelector(".car-btn.prev");
+    const next = root.querySelector(".car-btn.next");
+    const dotsWrap = root.querySelector(".car-dots");
+
+    if (!track || slides.length === 0) return;
+
+    // build dots
+    dotsWrap.innerHTML = "";
+    const dots = slides.map((_, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "car-dot" + (i === 0 ? " active" : "");
+      b.setAttribute("aria-label", `Go to slide ${i+1}`);
+      b.addEventListener("click", () => scrollToIndex(i));
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function indexFromScroll(){
+      const w = track.clientWidth || 1;
+      return Math.round(track.scrollLeft / w);
+    }
+
+    function setActive(i){
+      dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
+      if (prev) prev.disabled = (i <= 0);
+      if (next) next.disabled = (i >= slides.length - 1);
+    }
+
+    function scrollToIndex(i){
+      const w = track.clientWidth || 1;
+      track.scrollTo({ left: i * w, behavior: "smooth" });
+      setTimeout(() => setActive(i), 120);
+    }
+
+    // arrows
+    prev && prev.addEventListener("click", () => scrollToIndex(Math.max(0, indexFromScroll() - 1)));
+    next && next.addEventListener("click", () => scrollToIndex(Math.min(slides.length - 1, indexFromScroll() + 1)));
+
+    // update active on scroll end-ish
+    let t;
+    track.addEventListener("scroll", () => {
+      clearTimeout(t);
+      t = setTimeout(() => setActive(indexFromScroll()), 90);
+    });
+
+    // init
+    setActive(0);
   });
 })();
 
