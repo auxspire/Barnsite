@@ -480,11 +480,13 @@ section[id], main [id]{
 
 /* ================= HEADER REVAMP ================= */
 
+/* ================= HEADER – BAKER'S BARN ================= */
+
 .header-clean{
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(251,247,238,.85);
+  background: rgba(251,247,238,.88);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
@@ -493,27 +495,28 @@ section[id], main [id]{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding: 16px 0;
+  padding: 18px 0;
 }
 
 /* Brand */
 .brand{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:20px;
 }
 
 .brand img{
-  width: 72px;
-  height: 72px;
+  width: 78px;           /* intentionally bold */
+  height: 78px;
   object-fit: contain;
 }
 
 .brand-text strong{
   display:block;
   font-family: var(--font-serif);
-  font-size: 22px;
+  font-size: 24px;
   line-height:1.1;
+  letter-spacing:-0.01em;
 }
 
 .brand-text span{
@@ -522,11 +525,11 @@ section[id], main [id]{
   letter-spacing:.02em;
 }
 
-/* Header actions */
+/* Actions */
 .header-actions{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
 }
 
 /* Icon pills */
@@ -534,7 +537,7 @@ section[id], main [id]{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
+  gap:10px;
   padding:10px 12px;
   border-radius:999px;
   background: rgba(255,255,255,.7);
@@ -543,8 +546,8 @@ section[id], main [id]{
 }
 
 .icon-pill .ico{
-  width:36px;
-  height:36px;
+  width:38px;
+  height:38px;
   border-radius:50%;
   display:flex;
   align-items:center;
@@ -562,7 +565,7 @@ section[id], main [id]{
 .icon-pill.primary{
   background: linear-gradient(180deg,#25D366,#1ebd5a);
   border-color: transparent;
-  box-shadow: 0 12px 26px rgba(37,211,102,.35);
+  box-shadow: 0 14px 28px rgba(37,211,102,.35);
 }
 
 .icon-pill.primary .ico{
@@ -583,8 +586,8 @@ section[id], main [id]{
 /* Mobile */
 @media (max-width: 520px){
   .brand img{
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 62px;
   }
 
   .brand-text span{
@@ -596,6 +599,14 @@ section[id], main [id]{
   }
 }
 
+#ig-link svg{
+  width:18px;
+  height:18px;
+  fill: rgba(43,43,43,.92) !important;
+}
+.icon-pill.primary svg{
+  fill:#fff !important;
+}
 
   </style>
 </head>
@@ -606,32 +617,32 @@ section[id], main [id]{
 
     <!-- Brand -->
     <div class="brand">
-      <img src="assets/logo.png" alt="Barn Bakery Logo" />
+      <img src="assets/brand/logo.jpg" alt="The Baker's Barn logo" />
       <div class="brand-text">
-        <strong>Barn</strong>
+        <strong>The Baker’s Barn</strong>
         <span>Home Bakery • Paippad</span>
       </div>
     </div>
 
     <!-- Actions -->
     <div class="header-actions">
-      <a class="icon-pill" 
+      <a class="icon-pill"
          id="ig-link"
-         href="https://instagram.com/YOUR_HANDLE"
+         href="https://www.instagram.com/thebakersbaarn/"
          target="_blank"
          aria-label="Instagram">
         <span class="ico">
           <!-- Instagram -->
-          <svg viewBox="0 0 24 24">
-            <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm4.5 6a4.5 4.5 0 1 1 0 9a4.5 4.5 0 0 1 0-9Z"/>
-          </svg>
-        </span>
+          <!-- Replace ONLY the Instagram <svg>...</svg> inside #ig-link with this -->
+<svg viewBox="0 0 24 24" aria-hidden="true">
+  <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7.25A4.75 4.75 0 1 1 12 16.75A4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 12 14.75A2.75 2.75 0 0 0 12 9.25Zm5.4-2.1a1.05 1.05 0 1 1 0 2.1a1.05 1.05 0 0 1 0-2.1Z"/>
+</svg>
+
       </a>
 
       <a class="icon-pill primary"
          id="wa-cta"
-         href="https://wa.me/91XXXXXXXXXX"
-         target="_blank"
+         href="https://wa.me/918714870987"
          aria-label="Order on WhatsApp">
         <span class="ico">
           <!-- WhatsApp -->
@@ -645,6 +656,7 @@ section[id], main [id]{
 
   </div>
 </header>
+
 
 
 <main id="top">
